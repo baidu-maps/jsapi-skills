@@ -1,6 +1,6 @@
 ---
 name: bmap-jsapi-three
-description: 使用 MapV-Three 构建专业的 3D 地图和 GIS 应用 - 基于 Z-up 坐标系的 3D 地图库，支持地图编辑、测量工具、要素绘制、数据管理等地理可视化功能。适用于创建地图编辑器、测量工具、空间数据可视化等 Web-GIS 应用。
+description: 百度地图 JSAPI Three 版 (MapVThree)：基于three.js的Web二三维一体化地图可视化库，支持多源底图加载、三维模型加载、地理数据可视化、自然环境渲染、量测编辑等功能。适用于构建专业的二三维一体化地图、WebGIS、数字孪生等应用。
 license: MIT
 version: 1.0.0
 ---

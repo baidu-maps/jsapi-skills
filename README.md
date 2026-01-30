@@ -9,8 +9,8 @@ This repository provides AI assistant **Skills** for [Baidu Map JSAPI](https://l
 
 | Skill | Description |
 |-------|-------------|
-| **bmap-jsapi-gl** | Baidu Map JSAPI WebGL (BMapGL/BMap): map init, overlays (markers, polylines, polygons), events, layers, routing, geocoding, etc. For 2D map development. |
-| **bmap-jsapi-three** | Build professional 3D maps and GIS apps with MapV-Three - a Z-up coordinate based 3D map library. Supports map editing, measurement tools, feature drawing, data management and geo-visualization. For creating map editors, measurement tools, spatial data visualization and other Web-GIS applications. |
+| **bmap-jsapi-gl** | Baidu Map JSAPI WebGL (BMapGL/BMap): map initialization, overlays (markers, polylines, polygons), events, layers, routing, geocoding, etc. For 2D and 2.5D map development. |
+| **bmap-jsapi-three** | Baidu Map JSAPI Three (MapVThree): A Web-based 2D/3D integrated map visualization library built on three.js. Supports multi-source base map loading, 3D model loading, geo data visualization, natural environment rendering, measurement and editing, etc. For building professional 2D/3D integrated maps, WebGIS, digital twin and similar applications. |
 
 ## How to Use
 
@@ -23,7 +23,7 @@ cd jsapi-skills
 
 ### 2. Register the skill with your AI assistant
 
-Link or copy the `bmap-jsapi-gl` directory into your environment’s skills folder so the AI can load its docs during conversations.
+Link or copy the `bmap-jsapi-gl` and `bmap-jsapi-three` directories into your environment’s skills folder so the AI can load its docs during conversations.
 
 **Claude Desktop (local)**
 
@@ -31,16 +31,23 @@ Link or copy the `bmap-jsapi-gl` directory into your environment’s skills fold
 - Register via symlink (recommended):
   ```bash
   ln -sfn "$(pwd)/bmap-jsapi-gl" ~/.claude/skills/bmap-jsapi-gl
+  ln -sfn "$(pwd)/bmap-jsapi-three" ~/.claude/skills/bmap-jsapi-three
   ```
-- Or copy the `bmap-jsapi-gl` folder into `~/.claude/skills/`.
+- Or copy the `bmap-jsapi-gl` and `bmap-jsapi-three` folders into `~/.claude/skills/`.
 
 **Cursor**
 
-- Symlink or copy the skill directory into Cursor’s skills path (see Cursor docs; often `~/.cursor/skills/` or a project-configured path).
+- Skills directory is usually: `~/.cursor/skills/`
+- Register via symlink (recommended):
+  ```bash
+  ln -sfn "$(pwd)/bmap-jsapi-gl" ~/.cursor/skills/bmap-jsapi-gl
+  ln -sfn "$(pwd)/bmap-jsapi-three" ~/.cursor/skills/bmap-jsapi-three
+  ```
+- Or copy the `bmap-jsapi-gl` and `bmap-jsapi-three` folders into `~/.cursor/skills/`.
 
 ### 3. Use it in chat
 
-When your questions mention “Baidu Map”, “BMapGL”, “jsapi-gl”, or similar, the assistant will use this skill’s docs to give answers and code that match the Baidu Map JSAPI.
+When your questions mention “Baidu Map”, “BMapGL”, “jsapi-gl”, “MapVThree”, or similar, the assistant will use this skill’s docs to give answers and code that match the Baidu Map JSAPI.
 
 ## Repo structure
 
