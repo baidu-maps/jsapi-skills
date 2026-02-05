@@ -11,6 +11,7 @@ This repository provides AI assistant **Skills** for [Baidu Map JSAPI](https://l
 |-------|-------------|
 | **bmap-jsapi-gl** | Baidu Map JSAPI WebGL (BMapGL/BMap): map initialization, overlays (markers, polylines, polygons), events, layers, routing, geocoding, etc. For 2D and 2.5D map development. |
 | **bmap-jsapi-three** | Baidu Map JSAPI Three (MapVThree): A Web-based 2D/3D integrated map visualization library built on three.js. Supports multi-source base map loading, 3D model loading, geo data visualization, natural environment rendering, measurement and editing, etc. For building professional 2D/3D integrated maps, WebGIS, digital twin and similar applications. |
+| **jsapi-ui-kit** | Lightweight Baidu Map UI component library (@baidumap/jsapi-ui-kit). Provides PlaceSearch (keyword/nearby/bounds search) and PlaceDetail (POI details display) components for quick integration of standardized map UI. |
 
 ## How to Use
 
@@ -57,6 +58,9 @@ When your questions mention “Baidu Map”, “BMapGL”, “jsapi-gl”, “Ma
 │   ├── SKILL.md            # Skill entry and index
 │   └── references/         # API reference docs
 ├── bmap-jsapi-three/       # MapV-Three 3D map skill
+│   ├── SKILL.md            # Skill entry and index
+│   └── references/         # API reference docs
+├── jsapi-ui-kit/           # Baidu Map UI component library skill
 │   ├── SKILL.md            # Skill entry and index
 │   └── references/         # API reference docs
 └── README.md
