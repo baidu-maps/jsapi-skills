@@ -10,7 +10,8 @@
 | Skill | 说明 |
 |-------|------|
 | **bmap-jsapi-gl** | 百度地图 JSAPI WebGL 版 (BMapGL/BMap)：地图初始化、覆盖物（标注/折线/多边形）、事件、图层、路线规划、地理编码等。适用于 2D、2.5D 地图页面开发。 |
-| **bmap-jsapi-three** | 百度地图 JSAPI Three 版 (MapVThree)：基于three.js的Web二三维一体化地图可视化库，支持多源底图加载、三维模型加载、地理数据可视化、自然环境渲染、量测编辑等功能。适用于构建专业的二三维一体化地图、WebGIS、数字孪生等应用。  |
+| **bmap-jsapi-three** | 百度地图 JSAPI Three 版 (MapVThree)：基于three.js的Web二三维一体化地图可视化库，支持多源底图加载、三维模型加载、地理数据可视化、自然环境渲染、量测编辑等功能。适用于构建专业的二三维一体化地图、WebGIS、数字孪生等应用。 |
+| **jsapi-ui-kit** | 轻量级百度地图 UI 组件库 (@baidumap/jsapi-ui-kit)：提供 PlaceSearch（关键字/周边/范围检索）和 PlaceDetail（POI 详情展示）组件，快速集成标准化的地图 UI。 |
 
 ## 如何使用
 
@@ -57,6 +58,9 @@ cd jsapi-skills
 │   ├── SKILL.md            # Skill 入口与索引
 │   └── references/         # API 参考文档
 ├── bmap-jsapi-three/       # 百度地图 JSAPI Three Skill
+│   ├── SKILL.md            # Skill 入口与索引
+│   └── references/         # API 参考文档
+├── jsapi-ui-kit/           # 百度地图 UI 组件库 Skill
 │   ├── SKILL.md            # Skill 入口与索引
 │   └── references/         # API 参考文档
 └── README.md
