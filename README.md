@@ -50,7 +50,7 @@ Link or copy the `bmap-jsapi-gl`, `bmap-jsapi-three`, and `jsapi-ui-kit` directo
 
 ### 3. Use it in chat
 
-When your questions mention “Baidu Map”, “BMapGL”, “jsapi-gl”, “MapVThree”, or similar, the assistant will use this skill’s docs to give answers and code that match the Baidu Map JSAPI.
+When your questions mention “Baidu Map”, “BMapGL”, “jsapi-gl”, “MapVThree”, “jsapi-ui-kit”, or similar, the assistant will use this skill’s docs to give answers and code that match the Baidu Map JSAPI.
 
 ## Repo structure
 
