@@ -1,13 +1,13 @@
 ---
 name: bmap-jsapi-three
-description: 百度地图 JSAPI Three 版 (MapVThree)：基于three.js的Web二三维一体化地图可视化库，支持多源底图加载、三维模型加载、地理数据可视化、自然环境渲染、量测编辑等功能。适用于构建专业的二三维一体化地图、WebGIS、数字孪生等应用。
+description: 使用 MapV-Three 构建专业的 3D 地图和 GIS 应用 - 基于 Z-up 坐标系的 3D 地图库，支持地图编辑、测量工具、要素绘制、数据管理等地理可视化功能。适用于创建地图编辑器、测量工具、空间数据可视化等 Web-GIS 应用。
 license: MIT
-version: 1.0.0
+version: 1.1.0
 ---
 
-# Mapv-three 开发指南
+# MapV-Three 开发指南
 
-使用 Mapv-three 构建高性能的 3D 地图和 GIS 应用 - 一个采用 Z-up 坐标系的跨浏览器 WebGL 库。
+使用 MapV-Three 构建高性能的 3D 地图和 GIS 应用 - 一个采用 Z-up 坐标系的跨浏览器 WebGL 库。
 
 ## 何时适用
 
@@ -21,45 +21,97 @@ version: 1.0.0
 
 ## 快速参考
 
-### 0. 基础概念
+### 0. 核心引擎
 
-- `reference/common/coordinate-system.md` - 坐标系：Z-up、投影方式
-- `reference/common/event-binding.md` - 事件绑定模式
-
-### 1. 初始化
-
+- `reference/engine.md` - Engine 引擎核心：初始化、场景管理、渲染控制
 - `reference/initialization.md` - 引擎初始化、资源配置、百度地图适配器
 
-### 2. 数据管理
+### 1. 数据管理
 
-- `reference/datasource.md` - GeoJSON/JSON/CSV 加载、属性映射、增删改查
+- `reference/datasource.md` - DataSource 数据源基类
+- `reference/datasource/geojson-datasource.md` - GeoJSON 数据源
+- `reference/datasource/json-datasource.md` - JSON 数据源
+- `reference/datasource/csv-datasource.md` - CSV 数据源
+- `reference/datasource/dataitem.md` - DataItem 数据项
 
-### 3. 可视化组件
+### 2. 点对象与标签
 
-- `reference/label.md` - 文本/图标/组合标签、碰撞检测、淡入淡出
-- `reference/polygon.md` - 2D 填充、3D 拉伸、贴地渲染
-- `reference/polyline.md` - 屏幕空间/贴地模式、虚线样式
-- `reference/wall.md` - 围栏效果、纹理动画
+- `reference/simple-point.md` - SimplePoint 简单点
+- `reference/effect-point.md` - EffectPoint 特效点（Fan、Bubble、Wave、Breath、Radar 等）
+- `reference/marker-types.md` - 标记类型（Icon、BallonPoint、DOMPoint、EffectModelPoint）
+- `reference/circle.md` - Circle 圆形（屏幕空间渲染）
+- `reference/label.md` - Label 文本/图标标签（功能最丰富）
+- `reference/text.md` - Text 文本组件
+- `reference/cluster.md` - ClusterPoint 点聚合
 
-### 4. 绘制与编辑
+### 3. 线与面
 
-- `reference/editor.md` - 多边形/线条/点/圆/矩形绘制与编辑
-- `reference/measure.md` - 距离/面积/坐标测量
+- `reference/polyline.md` - Polyline 折线（flat 参数控制渲染模式）
+- `reference/simple-line.md` - SimpleLine 简单线
+- `reference/wall.md` - Wall 墙体/围栏
+- `reference/polygon.md` - Polygon 多边形
+- `reference/pillar.md` - Pillar 柱体/椎体
 
-### 5. 动画与追踪
+### 4. DOM覆盖物
 
-- `reference/tracker.md` - PathTracker/OrbitTracker/ObjectTracker
+- `reference/marker.md` - Marker 标记
+- `reference/popup.md` - Popup 弹出窗口
+- `reference/dom-overlay.md` - DOMOverlay DOM 覆盖物
 
-### 6. 环境效果
+### 5. 追踪器
 
-- `reference/sky-weather.md` - DynamicSky/PhysicalSky、云层、天气系统
+- `reference/tracker.md` - 追踪器总览与生命周期
+- `reference/path-tracker.md` - PathTracker 路径追踪
+- `reference/object-tracker.md` - ObjectTracker 对象追踪
+- `reference/orbit-tracker.md` - OrbitTracker 轨道追踪
 
+### 6. 编辑与测量
 
-## 注意事项
+- `reference/editor.md` - Editor 编辑器（支持点、线、面、圆、矩形绘制和编辑）
+- `reference/measure.md` - Measure 测量工具（支持点、线、面测量）
 
+### 7. 3D 模型
+
+- `reference/model.md` - 3D 模型加载（SimpleModel/AnimationModel/LODModel）
+
+### 8. 材质与特效
+
+- `reference/materials.md` - 材质系统（WaterMaterial、ExtendMeshStandardMaterial 等）
+- `reference/easing-function.md` - 缓动函数（LINEAR、QUINTIC_IN_OUT、CUBIC_OUT）
+
+### 9. 天空与天气
+
+- `reference/sky-weather.md` - 天空系统（EmptySky/DynamicSky/StaticSky）和天气
+
+### 10. 热力图
+
+- `reference/heatmap.md` - Heatmap 热力图
+
+### 11. 地图图层加载
+
+- `reference/imagery-tile-provider.md` - 影像瓦片加载（Baidu、Tianditu、Bing、OSM、Stadia）
+- `reference/vector-tile-provider.md` - 矢量瓦片加载（Baidu、Mapbox）
+- `reference/third-party-imagery.md` - 第三方图层接入（WMS、WMTS、XYZ 标准协议）
+- `reference/terrain-tile-provider.md` - 地形瓦片加载（Cesium、平面地形）
+
+### 12. LBS 位置服务
+
+- `reference/services.md` - 位置基础服务（地理编码、搜索、路线规划、行政区划等）
+
+### 13. 3DTiles 加载
+
+- `reference/3dtiles-loading.md` - 3D Tiles 加载（Default3DTiles、HDMap3DTiles）
+
+### 14. 基础概念
+
+- `reference/common/coordinate-system.md` - 坐标系：Z-up、投影方式
+- `reference/common/event-binding.md` - 事件绑定模式（地图事件绑定和可视化组件事件绑定）
+
+## 关键注意事项
+
+- **引擎初始化**：`new mapvthree.Engine(container, { map: { center: [lng, lat], range: meters } })`
 - **坐标系**：Z-up（X-东、Y-北、Z-上），与 Three.js 默认 Y-up 不同
-- **MeasureType**：使用 `mapvthree.Editor.MeasureType`
-
-## 如何使用
-
-请阅读各个参考文件以获取详细说明和代码示例。每个参考文件包含：功能说明、代码示例、API 参数、注意事项。
+- **视野控制**：使用 `range`（相机距离，米）而非 zoom
+- **属性赋值**：使用属性代理 `obj.color = value`，而非 `obj.setColor(value)`
+- **MeasureType**：使用 `mapvthree.Measure.MeasureType`
+- **图层设置**：通过 `MapView` 设置影像/矢量/地形提供者，而非 `engine.map`
