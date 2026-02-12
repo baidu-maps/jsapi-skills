@@ -18,10 +18,18 @@ MapV Three 提供四种追踪器用于实现路径动画、轨道运动和对象
 ### 生命周期控制
 
 ```javascript
-tracker.start(options);  // 开始动画
-tracker.pause();         // 暂停，返回当前状态
-tracker.stop();          // 停止，触发 onFinish
+tracker.start(options);  // 开始动画（暂停状态下调用则恢复播放）
+tracker.pause();         // 暂停，返回当前状态 {point, hpr, direction}
+tracker.stop();          // 停止，重置状态，触发 onFinish
 ```
+
+| 方法 | 说明 | 触发回调 |
+|------|------|----------|
+| `start()` | 开始或恢复动画播放 | `onStart` |
+| `pause()` | 暂停动画，保留当前状态 | 无 |
+| `stop()` | 停止动画，清空状态 | `onFinish` |
+
+> **注意**：不存在 `resume()` 方法。暂停后再次调用 `start()` 即可恢复播放。
 
 ### 状态查询
 
@@ -29,16 +37,16 @@ tracker.stop();          // 停止，触发 onFinish
 |------|------|------|
 | `isRunning` | boolean | 是否运行中 |
 | `isPaused` | boolean | 是否暂停 |
-| `currentState` | object | 当前状态：`{point, hpr, direction}` |
+| `currentState` | object | 当前状态 `{point, hpr, direction}` |
 
 ### 回调函数
 
 ```javascript
-tracker.onStart = () => console.log('开始');
-tracker.onFinish = () => console.log('结束');
+tracker.onStart = () => console.log('动画开始');
+tracker.onFinish = () => console.log('动画结束');
 tracker.onUpdate = (state) => {
     // state: {point: [lng,lat,alt], hpr: {heading,pitch,roll}, direction}
-    console.log(state.point);
+    console.log('位置:', state.point);
 };
 ```
 
@@ -103,9 +111,9 @@ tracker.start({ duration: 30000, range: 200, pitch: 45 });
 ### 轨迹插值
 
 ```javascript
-tracker.pointHandle = 'curve';              // 平滑曲线插值
-tracker.interpolateDirectThreshold = 30;    // 插值直接阈值
-tracker.interpolateDirectThresholdPercent = 0.1;  // 插值百分比
+tracker.pointHandle = 'curve';                         // 平滑曲线插值
+tracker.interpolateDirectThreshold = 10;               // 插值直接阈值（默认 10）
+tracker.interpolateDirectThresholdPercent = 0.4;       // 插值百分比（默认 0.4）
 ```
 
 ## OrbitTracker - 环绕追踪
@@ -137,7 +145,7 @@ tracker.start({
 });
 ```
 
-### 配置选项
+### OrbitTracker 配置选项
 
 | 参数 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
@@ -149,26 +157,20 @@ tracker.start({
 | `startAngle` | number | `0` | 起始角度（度） |
 | `endAngle` | number | `360` | 结束角度（度） |
 | `duration` | number | `10000` | 持续时间（毫秒） |
-| `keepRunning` | boolean | `true` | 持续运行 |
+| `keepRunning` | boolean | `false` | 持续运行 |
 | `loopMode` | string | `'repeat'` | 循环模式 |
 | `direction` | string | `'normal'` | 动画方向 |
 | `useWorldAxis` | boolean | `false` | 使用世界轴 |
 
-**loopMode 可选值：** `'repeat'`, `'reverse'`, `'alternate'`
-
-**direction 可选值：** `'normal'`, `'reverse'`, `'alternate'`, `'alternate-reverse'`
-
 ## HorizontalOrbitTracker - 水平旋转追踪
-
-提供更直观的水平面仰角参数：
 
 ```javascript
 const tracker = engine.add(new mapvthree.HorizontalOrbitTracker());
 
 tracker.start({
     center: [116.404, 39.915, 0],
-    range: 200,    // 观察点到目标的空间距离
-    angle: 30,     // 相对水平面的仰角（度）
+    range: 200,
+    angle: 30,
     duration: 10000
 });
 ```
@@ -187,49 +189,13 @@ tracker.track(vehicle, {
 });
 ```
 
-### 支持的对象类型
-
-- `Object3D` - Three.js 对象
-- `Vector3` - 三维向量
-- `[x, y, z]` - 坐标数组
-- `instanced entity` - 实例化对象
-
-### 配置选项
-
-| 参数 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| `lock` | boolean | `true` | 锁定视角 |
-| `range` / `radius` | number | - | 观察距离（米） |
-| `pitch` | number | `0` | 俯仰角（度） |
-| `heading` | number | `0` | 方位角（度） |
-| `height` | number | - | 高度偏移 |
-| `extraDir` | number | - | 方向修正角度 |
-| `duration` | number | `0` | 持续时间（0=持续追踪） |
-| `easing` | string | `'linear'` | 缓动函数 |
-
-### 特有回调
+### ObjectTracker 特有回调
 
 ```javascript
 tracker.onTrackFrame = (lastState, currentState) => {
     // lastState: 上一帧状态（首帧为 null）
     // currentState: {point: [lng,lat,alt], hpr: {heading,pitch,roll}}
 };
-```
-
-### 实时追踪移动对象
-
-```javascript
-const car = engine.add(new mapvthree.SimpleModel({ url: 'car.glb' }));
-const tracker = engine.add(new mapvthree.ObjectTracker());
-
-tracker.track(car, { range: 80, pitch: 50, lock: true });
-
-// 模拟车辆移动
-setInterval(() => {
-    car.position.fromArray(
-        engine.map.projectArrayCoordinate(route[index++])
-    );
-}, 100);
 ```
 
 ## 通用 start() 选项
@@ -241,16 +207,16 @@ setInterval(() => {
 | `pitch` | number | `60` | 俯仰角（度）|
 | `range` | number | `100` | 距离范围（米）|
 | `easing` | string/function | `'linear'` | 缓动函数 |
-| `repeatCount` | number | `1` | 重复次数 |
+| `repeatCount` | number | - | 重复次数（优先于 keepRunning） |
 | `delay` | number | `0` | 延迟启动（毫秒）|
 | `keepRunning` | boolean | `false` | 持续运行 |
-| `direction` | string | `'normal'` | 动画方向 |
+| `direction` | string | `'normal'` | 动画方向：`'normal'`/`'reverse'`/`'alternate'`/`'alternate-reverse'` |
 
 ## 缓动函数
 
-**内置缓动：**
+**内置缓动字符串：**
 - `'linear'` - 线性
-- `'ease-in'` - 缓入（t²）
+- `'ease-in'` - 缓入（t^2）
 - `'ease-out'` - 缓出
 - `'ease-in-out'` - 缓入缓出
 
@@ -288,26 +254,3 @@ orbitTracker.start({
 tracker.stop();
 engine.remove(tracker);
 ```
-
-## 常见问题
-
-**Q: 路径不平滑？**
-```javascript
-tracker.pointHandle = 'curve';
-tracker.interpolateDirectThreshold = 30;
-```
-
-**Q: 如何实现倒放？**
-```javascript
-tracker.start({ direction: 'reverse', ...options });
-```
-
-**Q: 如何平滑过渡到追踪状态？**
-```javascript
-engine.map.flyTo({ center: target, duration: 2000 })
-    .then(() => tracker.start(options));
-```
-
-**Q: OrbitTracker 与 HorizontalOrbitTracker 区别？**
-- `OrbitTracker`：使用 `radius` + `height` 控制位置
-- `HorizontalOrbitTracker`：使用 `range` + `angle`（仰角）控制，更直观

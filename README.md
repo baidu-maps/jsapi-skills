@@ -24,7 +24,7 @@ cd jsapi-skills
 
 ### 2. Register the skill with your AI assistant
 
-Link or copy the `bmap-jsapi-gl`, `bmap-jsapi-three`, and `jsapi-ui-kit` directories into your environment’s skills folder so the AI can load its docs during conversations.
+Link or copy the `bmap-jsapi-gl`, `bmap-jsapi-three`, and `jsapi-ui-kit` directories into your environment's skills folder so the AI can load its docs during conversations.
 
 **Claude Desktop (local)**
 

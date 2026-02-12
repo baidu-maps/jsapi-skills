@@ -1,277 +1,161 @@
-# DataSource 数据源使用指南
+# DataSource 数据源
 
 ## 概述
 
-DataSource 是 Mapv-three 中管理地理数据的核心组件。它负责将各种格式的原始数据转换为可视化组件可渲染的标准格式。
+DataSource 是管理地理数据的核心抽象类。负责数据格式转换、属性映射和数据操作。
 
 ## 数据源类型
 
 | 类型 | 说明 | 适用场景 |
 |------|------|----------|
-| **GeoJSONDataSource** | 处理标准 GeoJSON 格式（推荐） | 大多数地理可视化 |
-| **JSONDataSource** | 处理通用 JSON 格式 | 非标准格式数据 |
-| **CSVDataSource** | 处理 CSV 表格数据 | 点数据、表格导入 |
-| **DataSource** | 基础类，手动创建数据项 | 动态生成、实时更新 |
+| **DataSource** | 基础抽象类 | 动态生成、实时更新 |
+| **GeoJSONDataSource** | GeoJSON 格式（推荐） | 大多数地理可视化 |
+| **JSONDataSource** | 通用 JSON 格式 | 非标准格式数据 |
+| **CSVDataSource** | CSV 表格数据 | 点数据、表格导入 |
 
-## GeoJSONDataSource（推荐）
+## 构造参数
 
-### 创建数据源
+| 参数 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `id` | string | 自动生成时间戳 | 数据源唯一标识 |
+| `attributes` | object | `{}` | 属性映射配置 |
+| `coordType` | string | - | 坐标类型（用于坐标转换） |
+
+## 公共属性
+
+| 属性 | 类型 | 只读 | 说明 |
+|------|------|------|------|
+| `data` | object | 是 | 解析后的 buffer 格式数据 |
+| `userData` | object[] | 是 | 解析后的 array 格式数据 |
+| `size` | number | 是 | 数据项数量 |
+| `dataItems` | DataItem[] | 是 | 所有数据项数组 |
+| `objects` | Array | 否 | 连接的可视化对象 |
+| `needsUpdate` | boolean | 否 | 是否需要更新 |
+
+## 公共方法
+
+### 数据加载
 
 ```javascript
-// 方式1: 从 GeoJSON 对象创建
-const data = mapvthree.GeoJSONDataSource.fromGeoJSON({
-    type: 'FeatureCollection',
-    features: [
-        {
-            type: 'Feature',
-            geometry: { type: 'Point', coordinates: [116.39, 39.9] },
-            properties: { name: '北京', value: 100 }
-        }
-    ]
-});
-
-// 方式2: 从 URL 加载
-const data = await mapvthree.GeoJSONDataSource.fromURL('path/to/data.geojson');
+await data.load('https://example.com/data.geojson');
 ```
 
-### 绑定到可视化组件
+### 属性映射
 
 ```javascript
-const layer = engine.add(new mapvthree.Polygon({ color: 'red' }));
-layer.dataSource = data;
-```
+// 设置单个 attribute
+data.defineAttribute('color', 'fillColor');
 
-### 支持的几何类型
-
-- `Point` / `MultiPoint`
-- `LineString` / `MultiLineString`
-- `Polygon` / `MultiPolygon`
-
-## JSONDataSource
-
-适用于非标准 JSON 格式，支持自定义坐标字段和解析函数。
-
-```javascript
-// 从 JSON 对象创建
-const jsonData = [
-    { lng: 116.39, lat: 39.9, name: '北京', value: 100 },
-    { lng: 121.47, lat: 31.23, name: '上海', value: 90 }
-];
-
-const data = mapvthree.JSONDataSource.fromJSON(jsonData, {
-    parseCoordinates: (item) => ({
-        type: 'Point',
-        coordinates: [item.lng, item.lat]
-    })
-});
-
-// 从 URL 加载
-const data = await mapvthree.JSONDataSource.fromURL('data.json', {
-    parseCoordinates: (item) => ({
-        type: 'Point',
-        coordinates: [item.lng, item.lat]
-    })
-});
-```
-
-**配置选项：**
-
-| 选项 | 类型 | 说明 |
-|------|------|------|
-| coordinatesKey | string | 坐标字段名，默认 'coordinates' |
-| parseCoordinates | Function | 自定义坐标解析函数 |
-| parseFeature | Function | 自定义特征解析函数 |
-
-## CSVDataSource
-
-适用于 CSV 表格数据，继承自 JSONDataSource。
-
-```javascript
-// 从 CSV 字符串创建
-const csvString = `lng,lat,name,value
-116.39,39.9,北京,100
-121.47,31.23,上海,90`;
-
-const data = mapvthree.CSVDataSource.fromCSVString(csvString, {
-    parseCoordinates: (item) => ({
-        type: 'Point',
-        coordinates: [parseFloat(item.lng), parseFloat(item.lat)]
-    })
-});
-
-// 从 URL 加载
-const data = await mapvthree.CSVDataSource.fromURL('data.csv', {
-    parseCoordinates: (item) => ({
-        type: 'Point',
-        coordinates: [parseFloat(item.lng), parseFloat(item.lat)]
-    })
-});
-```
-
-## 属性映射
-
-将数据属性映射到渲染属性（着色器 attribute）。
-
-```javascript
-// 批量定义属性映射
-// 格式: { 渲染属性名: 数据属性名 或 映射函数 }
+// 批量设置（推荐）
 data.defineAttributes({
-    color: 'colorField',                  // 'colorField' 是数据中的属性名
-    size: (attrs) => attrs.value / 10     // 函数映射，attrs 是数据项的 attributes
+    color: 'fillColor',
+    size: (attrs) => attrs.value / 10
 });
 
-// 单个属性映射
-// defineAttribute(渲染属性名, 数据属性名)
-data.defineAttribute('height', 'buildingHeight');  // 将数据中的 buildingHeight 映射到渲染的 height
-
-// 条件映射
-data.defineAttribute('color', (attrs) => {
-    if (attrs.value > 100) return [255, 0, 0];
-    return [0, 255, 0];
-});
+// 移除
+data.undefineAttribute('color');
+data.undefineAllAttributes();
 ```
 
-**示例数据：**
-```javascript
-// 假设 GeoJSON 数据如下
-{
-    type: 'Feature',
-    properties: {
-        colorField: [255, 0, 0],    // 映射到 color
-        value: 50,                   // 通过函数映射到 size (50/10=5)
-        buildingHeight: 100          // 映射到 height
-    }
-}
-```
-
-## 数据操作
-
-### 添加数据
+### 数据操作
 
 ```javascript
-// 添加单个
+// 添加
 data.add(new mapvthree.DataItem([116.39, 39.9], { name: '北京' }));
+data.add([item1, item2, item3]);  // 批量添加
 
-// 批量添加
-data.add([item1, item2, item3]);
-```
-
-### 修改数据
-
-```javascript
-// 修改属性
-data.setAttributeValues('featureId', { color: [255, 0, 0], size: 20 });
-
-// 修改坐标
-data.setCoordinates('featureId', [116.40, 39.91]);
-```
-
-### 删除数据
-
-```javascript
+// 移除
 data.remove('featureId');
 data.remove(['id1', 'id2']);
+
+// 设置属性值
+data.setAttributeValue('featureId', 'color', [255, 0, 0]);
+data.setAttributeValues('featureId', { color: [255, 0, 0], size: 20 });
+
+// 设置坐标
+data.setCoordinates('featureId', [116.40, 39.91]);
+
+// 获取
+const item = data.get(0);
+const dataItem = data.getDataItem(0);
 ```
 
-### 查询数据
+### 数据管理
 
 ```javascript
-const count = data.size;                    // 数据项数量
-const item = data.getDataItem(0);           // 获取数据项
-const allItems = data.dataItems;            // 所有数据项
-```
-
-### 过滤数据
-
-```javascript
-// 过滤函数签名: (dataItem, index) => boolean
+data.exportToGeoJSON();
+data.clear();
 data.setFilter((dataItem, index) => dataItem.attributes.visible === true);
+data.setData(newData);
+data.dispose();
 ```
 
-### 导出数据
+## 事件
+
+| 事件 | 参数 | 说明 |
+|------|------|------|
+| `afterAdd` | `{ dataItems }` | 数据添加后触发 |
+| `afterRemove` | `{ dataItems }` | 数据移除后触发 |
+
+## DataItem 数据项
 
 ```javascript
-const geojson = data.exportToGeoJSON();
+const item = new mapvthree.DataItem(
+    [116.39, 39.9],           // 坐标
+    { name: '北京', value: 100 }  // 属性
+);
 ```
 
-## 实际应用示例
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| `id` | string | 唯一标识 |
+| `geometry` | object | 几何信息 |
+| `properties` | object | 原始属性 |
+| `attributes` | object | 解析后的属性 |
 
-### 城市点位可视化
-
-```javascript
-const cities = await mapvthree.GeoJSONDataSource.fromURL('cities.geojson');
-
-cities.defineAttributes({
-    color: (attrs) => {
-        const pop = attrs.population;
-        if (pop > 10000000) return [255, 0, 0];
-        if (pop > 5000000) return [255, 128, 0];
-        return [0, 255, 0];
-    },
-    size: (attrs) => Math.sqrt(attrs.population) / 100
-});
-
-const points = engine.add(new mapvthree.SimplePoint({
-    vertexColors: true,
-    vertexSizes: true
-}));
-points.dataSource = cities;
-```
-
-### 实时数据更新
+## 基础示例
 
 ```javascript
 const data = new mapvthree.DataSource();
+
 data.add([
-    new mapvthree.DataItem([116.39, 39.9], { id: 'car1' }),
-    new mapvthree.DataItem([121.47, 31.23], { id: 'car2' })
+    new mapvthree.DataItem([116.39, 39.9], { name: '北京', value: 100 }),
+    new mapvthree.DataItem([121.47, 31.23], { name: '上海', value: 90 }),
 ]);
 
-const points = engine.add(new mapvthree.SimplePoint({ size: 10 }));
+const points = engine.add(new mapvthree.SimplePoint({ vertexColors: true }));
 points.dataSource = data;
+
+data.defineAttributes({
+    color: (attrs) => attrs.value > 90 ? [255, 0, 0] : [0, 255, 0],
+    size: (attrs) => attrs.value / 10
+});
+```
+
+## 实时数据更新
+
+```javascript
+const data = new mapvthree.DataSource();
 
 // 定时更新位置
 setInterval(async () => {
-    const positions = await fetch('/api/vehicle-positions').then(r => r.json());
+    const positions = await fetch('/api/positions').then(r => r.json());
     positions.forEach(pos => {
         data.setCoordinates(pos.id, [pos.lng, pos.lat]);
     });
 }, 1000);
 ```
 
-## 最佳实践
-
-### 性能优化
+## 数据过滤
 
 ```javascript
-// 批量添加（推荐）
-data.add([item1, item2, item3, ...]);
-
-// 批量定义属性（推荐）
-data.defineAttributes({ color: 'c', size: 's' });
-
-// 数据过滤减少渲染负担
-data.setFilter((dataItem) => dataItem.attributes.visible);
+data.setFilter((dataItem) => dataItem.attributes.value > 50);
+data.setFilter(null);  // 清除过滤
 ```
 
-### 数据格式选择
+## 资源清理
 
-1. **GeoJSON**（推荐）- 标准格式，支持所有几何类型
-2. **JSON** - 灵活格式，需要自定义解析
-3. **CSV** - 适合表格数据和点数据
-4. **手动创建** - 适合动态生成和实时更新
-
-## 常见问题
-
-**Q: 数据没有显示？**
-- 检查 `layer.dataSource = data` 是否正确设置
-- 检查坐标格式（GeoJSON 使用 [经度, 纬度]）
-- 检查数据是否在地图视野范围内
-
-**Q: 属性映射不生效？**
-- 确保可视化对象启用了相应特性（如 `vertexColors: true`）
-- 检查属性名是否正确
-
-**Q: 数据更新后视图没有刷新？**
-- 使用数据源的更新方法（`setAttributeValues`, `setCoordinates`）
-- 数据源修改后会自动触发更新
+```javascript
+data.clear();
+data.dispose();
+```
