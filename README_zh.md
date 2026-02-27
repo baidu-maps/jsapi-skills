@@ -24,29 +24,29 @@ cd jsapi-skills
 
 ### 2. 将 Skill 注册到你的 AI 助手
 
-把 `bmap-jsapi-gl`、`bmap-jsapi-three`、`jsapi-ui-kit` 目录链接或复制到当前环境对应的 skills 目录，这样 AI 在对话时会自动读取这些文档。
+把 `skills/` 目录下的 `bmap-jsapi-gl`、`bmap-jsapi-three`、`jsapi-ui-kit` 链接或复制到当前环境对应的 skills 目录，这样 AI 在对话时会自动读取这些文档。
 
 **Claude Desktop（本地）**
 
 - Skills 目录一般为：`~/.claude/skills/`
 - 注册（软链，推荐）：
   ```bash
-  ln -sfn "$(pwd)/bmap-jsapi-gl" ~/.claude/skills/bmap-jsapi-gl
-  ln -sfn "$(pwd)/bmap-jsapi-three" ~/.claude/skills/bmap-jsapi-three
-  ln -sfn "$(pwd)/jsapi-ui-kit" ~/.claude/skills/jsapi-ui-kit
+  ln -sfn "$(pwd)/skills/bmap-jsapi-gl" ~/.claude/skills/bmap-jsapi-gl
+  ln -sfn "$(pwd)/skills/bmap-jsapi-three" ~/.claude/skills/bmap-jsapi-three
+  ln -sfn "$(pwd)/skills/jsapi-ui-kit" ~/.claude/skills/jsapi-ui-kit
   ```
-- 或直接把 `bmap-jsapi-gl`、`bmap-jsapi-three`、`jsapi-ui-kit` 文件夹复制到 `~/.claude/skills/` 下。
+- 或直接把 `skills/bmap-jsapi-gl`、`skills/bmap-jsapi-three`、`skills/jsapi-ui-kit` 文件夹复制到 `~/.claude/skills/` 下。
 
 **Cursor**
 
 - Skills 目录一般为：`~/.cursor/skills/`
 - 注册（软链，推荐）：
   ```bash
-  ln -sfn "$(pwd)/bmap-jsapi-gl" ~/.cursor/skills/bmap-jsapi-gl
-  ln -sfn "$(pwd)/bmap-jsapi-three" ~/.cursor/skills/bmap-jsapi-three
-  ln -sfn "$(pwd)/jsapi-ui-kit" ~/.cursor/skills/jsapi-ui-kit
+  ln -sfn "$(pwd)/skills/bmap-jsapi-gl" ~/.cursor/skills/bmap-jsapi-gl
+  ln -sfn "$(pwd)/skills/bmap-jsapi-three" ~/.cursor/skills/bmap-jsapi-three
+  ln -sfn "$(pwd)/skills/jsapi-ui-kit" ~/.cursor/skills/jsapi-ui-kit
   ```
-- 或直接把 `bmap-jsapi-gl`、`bmap-jsapi-three`、`jsapi-ui-kit` 文件夹复制到 `~/.cursor/skills/` 下。
+- 或直接把 `skills/bmap-jsapi-gl`、`skills/bmap-jsapi-three`、`skills/jsapi-ui-kit` 文件夹复制到 `~/.cursor/skills/` 下。
 
 ### 3. 在对话中使用
 
@@ -56,15 +56,16 @@ cd jsapi-skills
 
 ```
 .
-├── bmap-jsapi-gl/          # 百度地图 JSAPI WebGL Skill
-│   ├── SKILL.md            # Skill 入口与索引
-│   └── references/         # API 参考文档
-├── bmap-jsapi-three/       # 百度地图 JSAPI Three Skill
-│   ├── SKILL.md            # Skill 入口与索引
-│   └── references/         # API 参考文档
-├── jsapi-ui-kit/           # 百度地图 UI 组件库 Skill
-│   ├── SKILL.md            # Skill 入口与索引
-│   └── references/         # API 参考文档
+├── skills/
+│   ├── bmap-jsapi-gl/          # 百度地图 JSAPI WebGL Skill
+│   │   ├── SKILL.md            # Skill 入口与索引
+│   │   └── references/         # API 参考文档
+│   ├── bmap-jsapi-three/       # 百度地图 JSAPI Three Skill
+│   │   ├── SKILL.md            # Skill 入口与索引
+│   │   └── references/         # API 参考文档
+│   └── jsapi-ui-kit/           # 百度地图 UI 组件库 Skill
+│       ├── SKILL.md            # Skill 入口与索引
+│       └── references/         # API 参考文档
 └── README.md
 ```
 
