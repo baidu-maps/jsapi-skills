@@ -24,29 +24,29 @@ cd jsapi-skills
 
 ### 2. Register the skill with your AI assistant
 
-Link or copy the `bmap-jsapi-gl`, `bmap-jsapi-three`, and `jsapi-ui-kit` directories into your environment's skills folder so the AI can load its docs during conversations.
+Link or copy the skill directories under `skills/` into your environment's skills folder so the AI can load its docs during conversations.
 
 **Claude Desktop (local)**
 
 - Skills directory is usually: `~/.claude/skills/`
 - Register via symlink (recommended):
   ```bash
-  ln -sfn "$(pwd)/bmap-jsapi-gl" ~/.claude/skills/bmap-jsapi-gl
-  ln -sfn "$(pwd)/bmap-jsapi-three" ~/.claude/skills/bmap-jsapi-three
-  ln -sfn "$(pwd)/jsapi-ui-kit" ~/.claude/skills/jsapi-ui-kit
+  ln -sfn "$(pwd)/skills/bmap-jsapi-gl" ~/.claude/skills/bmap-jsapi-gl
+  ln -sfn "$(pwd)/skills/bmap-jsapi-three" ~/.claude/skills/bmap-jsapi-three
+  ln -sfn "$(pwd)/skills/jsapi-ui-kit" ~/.claude/skills/jsapi-ui-kit
   ```
-- Or copy the `bmap-jsapi-gl`, `bmap-jsapi-three`, and `jsapi-ui-kit` folders into `~/.claude/skills/`.
+- Or copy the `skills/bmap-jsapi-gl`, `skills/bmap-jsapi-three`, and `skills/jsapi-ui-kit` folders into `~/.claude/skills/`.
 
 **Cursor**
 
 - Skills directory is usually: `~/.cursor/skills/`
 - Register via symlink (recommended):
   ```bash
-  ln -sfn "$(pwd)/bmap-jsapi-gl" ~/.cursor/skills/bmap-jsapi-gl
-  ln -sfn "$(pwd)/bmap-jsapi-three" ~/.cursor/skills/bmap-jsapi-three
-  ln -sfn "$(pwd)/jsapi-ui-kit" ~/.cursor/skills/jsapi-ui-kit
+  ln -sfn "$(pwd)/skills/bmap-jsapi-gl" ~/.cursor/skills/bmap-jsapi-gl
+  ln -sfn "$(pwd)/skills/bmap-jsapi-three" ~/.cursor/skills/bmap-jsapi-three
+  ln -sfn "$(pwd)/skills/jsapi-ui-kit" ~/.cursor/skills/jsapi-ui-kit
   ```
-- Or copy the `bmap-jsapi-gl`, `bmap-jsapi-three`, and `jsapi-ui-kit` folders into `~/.cursor/skills/`.
+- Or copy the `skills/bmap-jsapi-gl`, `skills/bmap-jsapi-three`, and `skills/jsapi-ui-kit` folders into `~/.cursor/skills/`.
 
 ### 3. Use it in chat
 
@@ -56,15 +56,16 @@ When your questions mention “Baidu Map”, “BMapGL”, “jsapi-gl”, “Ma
 
 ```
 .
-├── bmap-jsapi-gl/          # Baidu Map JSAPI WebGL skill
-│   ├── SKILL.md            # Skill entry and index
-│   └── references/         # API reference docs
-├── bmap-jsapi-three/       # MapV-Three 3D map skill
-│   ├── SKILL.md            # Skill entry and index
-│   └── references/         # API reference docs
-├── jsapi-ui-kit/           # Baidu Map UI component library skill
-│   ├── SKILL.md            # Skill entry and index
-│   └── references/         # API reference docs
+├── skills/
+│   ├── bmap-jsapi-gl/          # Baidu Map JSAPI WebGL skill
+│   │   ├── SKILL.md            # Skill entry and index
+│   │   └── references/         # API reference docs
+│   ├── bmap-jsapi-three/       # MapV-Three 3D map skill
+│   │   ├── SKILL.md            # Skill entry and index
+│   │   └── references/         # API reference docs
+│   └── jsapi-ui-kit/           # Baidu Map UI component library skill
+│       ├── SKILL.md            # Skill entry and index
+│       └── references/         # API reference docs
 └── README.md
 ```
 
