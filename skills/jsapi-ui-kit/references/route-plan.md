@@ -4,8 +4,6 @@
 
 > **注意**: 目前仅开放**驾车**路径规划功能。公交、骑行、步行等后续会陆续开放。
 
----
-
 ## 构造函数
 
 ```typescript
@@ -37,7 +35,6 @@ interface DrivingOptions {
 }
 ```
 
----
 
 ## 导入方式
 
@@ -67,8 +64,6 @@ import type {
 } from '@baidumap/jsapi-ui-kit';
 ```
 
----
-
 ## 驾车策略枚举
 
 ```typescript
@@ -89,7 +84,6 @@ enum DrivingPolicy {
 }
 ```
 
----
 
 ## 方法
 
@@ -150,8 +144,6 @@ await routePlan.search({
 });
 ```
 
----
-
 ### clear()
 
 清空搜索结果和地图覆盖物。
@@ -159,8 +151,6 @@ await routePlan.search({
 ```typescript
 clear(): void
 ```
-
----
 
 ### getCurrentType()
 
@@ -172,8 +162,6 @@ getCurrentType(): RoutePlanType
 
 **返回值**: `'driving'` | `'transit'` | `'riding'` | `'walking'`
 
----
-
 ### getLastResult()
 
 获取上次搜索的归一化结果。
@@ -181,8 +169,6 @@ getCurrentType(): RoutePlanType
 ```typescript
 getLastResult(): NormalizedRouteResult | null
 ```
-
----
 
 ### destroy()
 
@@ -192,7 +178,6 @@ getLastResult(): NormalizedRouteResult | null
 destroy(): void
 ```
 
----
 
 ### on(event, handler)
 
@@ -202,7 +187,6 @@ destroy(): void
 on(event: string, handler: Function): this
 ```
 
----
 
 ### off(event, handler?)
 
@@ -212,7 +196,6 @@ on(event: string, handler: Function): this
 off(event: string, handler?: Function): this
 ```
 
----
 
 ## 事件
 
@@ -254,7 +237,6 @@ routePlan.on('navclick', (data) => {
 });
 ```
 
----
 
 ## 类型定义
 
@@ -361,7 +343,6 @@ interface DriveSegment extends BaseSegment {
 }
 ```
 
----
 
 ## 使用示例
 
@@ -481,8 +462,6 @@ routePlan.on('planselect', (data) => {
     }
 });
 ```
-
----
 
 ## 注意事项
 
