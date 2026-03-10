@@ -22,7 +22,7 @@ git clone https://github.com/baidu-maps/jsapi-skills.git
 cd jsapi-skills
 ```
 
-### 1. (Alternative) Download from GitHub Releases
+### 1. Download from GitHub Releases (Optional)
 
 Download the `jsapi-skills.zip` asset from [Releases](https://github.com/baidu-maps/jsapi-skills/releases), then unzip it:
 

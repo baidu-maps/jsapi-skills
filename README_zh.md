@@ -22,7 +22,7 @@ git clone https://github.com/baidu-maps/jsapi-skills.git
 cd jsapi-skills
 ```
 
-### 1.（可选）从 GitHub Release 下载
+### 1. 从 GitHub Release 下载（可选）
 
 你也可以直接从 [Releases](https://github.com/baidu-maps/jsapi-skills/releases) 下载附件 `jsapi-skills.zip`，然后解压使用：
 
