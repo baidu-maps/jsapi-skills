@@ -22,6 +22,15 @@ git clone https://github.com/baidu-maps/jsapi-skills.git
 cd jsapi-skills
 ```
 
+### 1. (Alternative) Download from GitHub Releases
+
+Download the `jsapi-skills.zip` asset from [Releases](https://github.com/baidu-maps/jsapi-skills/releases), then unzip it:
+
+```bash
+unzip jsapi-skills.zip
+cd skills
+```
+
 ### 2. Register the skill with your AI assistant
 
 Link or copy the skill directories under `skills/` into your environment's skills folder so the AI can load its docs during conversations.

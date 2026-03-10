@@ -10,6 +10,7 @@ CSVDataSource 是 Mapv-three 中处理 CSV 表格数据的专用类。继承自 
 - 支持自定义分隔符
 - 自动类型推断（数字转换）
 - 继承 JSONDataSource 的所有解析功能
+- 支持WKT格式
 
 ## 静态方法
 

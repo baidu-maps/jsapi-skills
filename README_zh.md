@@ -22,6 +22,15 @@ git clone https://github.com/baidu-maps/jsapi-skills.git
 cd jsapi-skills
 ```
 
+### 1.（可选）从 GitHub Release 下载
+
+你也可以直接从 [Releases](https://github.com/baidu-maps/jsapi-skills/releases) 下载附件 `jsapi-skills.zip`，然后解压使用：
+
+```bash
+unzip jsapi-skills.zip
+cd skills
+```
+
 ### 2. 将 Skill 注册到你的 AI 助手
 
 把 `skills/` 目录下的 `bmap-jsapi-gl`、`bmap-jsapi-three`、`jsapi-ui-kit` 链接或复制到当前环境对应的 skills 目录，这样 AI 在对话时会自动读取这些文档。
