@@ -42,9 +42,9 @@ new BMapGL.XxxRoute(location, {
 
 | 参数 | 回调参数 | 说明 |
 |------|----------|------|
-| onSearchComplete | `(results, statusCode)` | 搜索完成时触发 |
-| onMarkersSet | `(pois)` | 标注添加完成时触发 |
-| onPolylinesSet | `(routes)` | 路线折线绑定完成时触发 |
+| onSearchComplete | `(results, statusCode)` | 搜索完成时触发（数据就绪，覆盖物尚未创建） |
+| onMarkersSet | `(pois)` | 标注添加完成时触发（`poi.marker` 可用） |
+| onPolylinesSet | `(routes)` | 路线折线绑定完成时触发（`route.getPolyline()` 可用） |
 | onInfoHtmlSet | `(poi, html)` | 标注信息窗口 HTML 创建完成时触发 |
 | onResultsHtmlSet | `(html)` | 结果列表 HTML 创建完成时触发 |
 
@@ -156,18 +156,20 @@ onSearchComplete: function(results) {
 | getRouteIndex() | - | number | 获取所属路线段的索引 |
 | getPlanIndex() | - | number | 获取所属方案的索引 |
 
-### LocalResultPoi 起终点信息
+### LocalResultPoi 结果点信息
 
-```javascript
-{
-    title: String,   // POI 名称/地址
-    point: Point,    // 坐标点
-    city: String,    // 所在城市
-    uid: String,     // POI 唯一标识
-    url: String,     // POI 详情页链接
-    marker: Marker   // 关联的地图标注（onMarkersSet 回调中可用）
-}
-```
+路线规划、本地检索等服务共用的 POI 数据结构：
+
+| 属性 | 类型 | 说明 |
+|------|------|------|
+| title | string | 名称 |
+| uid | string | 唯一标识 |
+| point | Point | 坐标 |
+| address | string | 地址 |
+| city | string | 城市 |
+| province | string | 省份 |
+| url | string | POI 详情页 URL |
+| marker | Marker | 地图标注（`onMarkersSet` 回调中可用，需设置 `renderOptions.map`） |
 
 ## 状态常量
 

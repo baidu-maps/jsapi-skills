@@ -1,6 +1,12 @@
 ---
 name: jsapi-ui-kit
 description: 百度地图 JavaScript API ui-kit 组件库开发指南。提供地点自动补全（PlaceAutocomplete）、地点检索（PlaceSearch）和地点详情（PlaceDetail）组件的使用参考。当用户需要：(1) 实现地点搜索输入框自动补全、(2) 在百度地图上实现地点搜索功能、(3) 展示 POI 详情信息、(4) 了解 @baidumap/jsapi-ui-kit 的 API 用法、(5) 处理组件事件回调时使用此 skill。
+metadata:
+  openclaw:
+    requires:
+      bins: ["node"]
+      env: BMAP_JSAPI_KEY
+    primaryEnv: BMAP_JSAPI_KEY
 ---
 
 # 百度地图 jsapi-ui-kit
