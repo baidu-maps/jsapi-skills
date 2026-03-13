@@ -142,20 +142,14 @@ local.searchNearby('超市', center, 1000);  // 半径 1000 米
 
 ## POI 对象
 
+基础属性参见 [LocalResultPoi](./route-common.md#localresultpoi-结果点信息)。LocalSearch 返回的 POI 包含以下扩展属性：
+
 | 属性 | 类型 | 说明 |
 |------|------|------|
-| title | string | 名称 |
-| uid | string | 唯一标识 |
-| point | Point | 坐标 |
-| address | string | 地址 |
-| city | string | 城市 |
-| province | string | 省份 |
 | phoneNumber | string | 电话 |
-| url | string | POI 详情页 URL |
 | detailUrl | string | 百度地图详情页 URL |
 | type | number | 类型，见下方常量 |
 | isAccurate | boolean | 是否精确定位 |
-| marker | Marker | 对应的地图标注（设置 renderOptions.map 后有效） |
 
 ### POI 类型常量
 

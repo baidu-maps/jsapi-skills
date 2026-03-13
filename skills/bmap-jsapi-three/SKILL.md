@@ -3,6 +3,12 @@ name: bmap-jsapi-three
 description: 使用 MapV-Three 构建专业的 3D 地图和 GIS 应用 - 基于 Z-up 坐标系的 3D 地图库，支持地图编辑、测量工具、要素绘制、数据管理等地理可视化功能。适用于创建地图编辑器、测量工具、空间数据可视化等 Web-GIS 应用。
 license: MIT
 version: 1.1.0
+metadata:
+  openclaw:
+    requires:
+      bins: ["node"]
+      env: BMAP_JSAPI_KEY
+    primaryEnv: BMAP_JSAPI_KEY
 ---
 
 # MapV-Three 开发指南
@@ -40,7 +46,7 @@ version: 1.1.0
 - `reference/effect-point.md` - EffectPoint 特效点（Fan、Bubble、Wave、Breath、Radar 等）
 - `reference/marker-types.md` - 标记类型（Icon、BallonPoint、DOMPoint、EffectModelPoint）
 - `reference/circle.md` - Circle 圆形（屏幕空间渲染）
-- `reference/label.md` - Label 文本/图标标签（功能最丰富）
+- `reference/label.md` - Label 文本/图标标签
 - `reference/text.md` - Text 文本组件
 - `reference/cluster.md` - ClusterPoint 点聚合
 
@@ -50,9 +56,9 @@ version: 1.1.0
 - `reference/simple-line.md` - SimpleLine 简单线
 - `reference/wall.md` - Wall 墙体/围栏
 - `reference/polygon.md` - Polygon 多边形
-- `reference/pillar.md` - Pillar 柱体/椎体
+- `reference/pillar.md` - Pillar 柱体
 
-### 4. DOM覆盖物
+### 4. 覆盖物
 
 - `reference/marker.md` - Marker 标记
 - `reference/popup.md` - Popup 弹出窗口
@@ -67,12 +73,14 @@ version: 1.1.0
 
 ### 6. 编辑与测量
 
-- `reference/editor.md` - Editor 编辑器（支持点、线、面、圆、矩形绘制和编辑）
-- `reference/measure.md` - Measure 测量工具（支持点、线、面测量）
+- `reference/editor.md` - Editor 编辑器
+- `reference/measure.md` - Measure 测量工具
 
 ### 7. 3D 模型
 
 - `reference/model.md` - 3D 模型加载（SimpleModel/AnimationModel/LODModel）
+- `reference/twin.md` - Twin 孪生车流（实时车流可视化、DataProvider 数据处理）
+- `reference/mock-twin.md` - MockTwin 模拟车流（基于路线数据的车流模拟生成）
 
 ### 8. 材质与特效
 
@@ -93,6 +101,7 @@ version: 1.1.0
 - `reference/vector-tile-provider.md` - 矢量瓦片加载（Baidu、Mapbox）
 - `reference/third-party-imagery.md` - 第三方图层接入（WMS、WMTS、XYZ 标准协议）
 - `reference/terrain-tile-provider.md` - 地形瓦片加载（Cesium、平面地形）
+- `reference/tile-mask.md` - TileMask 瓦片掩膜（按区域裁剪瓦片图层显示）
 
 ### 12. LBS 位置服务
 
@@ -105,7 +114,7 @@ version: 1.1.0
 ### 14. 基础概念
 
 - `reference/common/coordinate-system.md` - 坐标系：Z-up、投影方式
-- `reference/common/event-binding.md` - 事件绑定模式（地图事件绑定和可视化组件事件绑定）
+- `reference/common/event-binding.md` - 事件绑定模式
 
 ## 关键注意事项
 
