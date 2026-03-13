@@ -1,0 +1,47 @@
+name: Build Skills Zip
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout (git clone)
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          rm -rf .git
+          git init
+          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git fetch --depth 1 origin "refs/tags/${GITHUB_REF_NAME}"
+          git checkout FETCH_HEAD
+
+      - name: Zip skills directory
+        run: |
+          test -d skills
+          rm -f jsapi-skills.zip
+          zip -r jsapi-skills.zip skills \
+            -x "*/.DS_Store"
+
+      - name: Create or Update GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="${GITHUB_REF_NAME}"
+          # Create release if it doesn't exist yet; otherwise continue
+          gh release view "$tag" >/dev/null 2>&1 || \
+            gh release create "$tag" --generate-notes
+
+      - name: Upload jsapi-skills.zip to Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="${GITHUB_REF_NAME}"
+          gh release upload "$tag" jsapi-skills.zip --clobber

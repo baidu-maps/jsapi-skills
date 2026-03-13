@@ -1,6 +1,6 @@
 ---
 name: jsapi-ui-kit
-description: 百度地图 JavaScript API ui-kit 组件库开发指南。提供地点自动补全（PlaceAutocomplete）、地点检索（PlaceSearch）和地点详情（PlaceDetail）组件的使用参考。当用户需要：(1) 实现地点搜索输入框自动补全、(2) 在百度地图上实现地点搜索功能、(3) 展示 POI 详情信息、(4) 了解 @baidumap/jsapi-ui-kit 的 API 用法、(5) 处理组件事件回调时使用此 skill。
+description: 百度地图 JavaScript API ui-kit 组件库开发指南。提供地点自动补全（PlaceAutocomplete）、地点检索（PlaceSearch）、地点详情（PlaceDetail）和路径规划（RoutePlan）组件的使用参考。当用户需要：(1) 实现地点搜索输入框自动补全、(2) 在百度地图上实现地点搜索功能、(3) 展示 POI 详情信息、(4) 实现驾车路径规划功能、(5) 了解 @baidumap/jsapi-ui-kit 的 API 用法、(6) 处理组件事件回调时使用此 skill。
 metadata:
   openclaw:
     requires:
@@ -11,7 +11,7 @@ metadata:
 
 # 百度地图 jsapi-ui-kit
 
-轻量级百度地图 UI 组件库，提供地点自动补全、地点检索和详情展示能力。
+轻量级百度地图 UI 组件库，提供地点自动补全、地点检索、详情展示和路径规划能力。
 
 ## 什么时候使用
 
@@ -19,6 +19,7 @@ metadata:
 - 需要在地图应用中添加搜索输入框自动补全功能
 - 需要在地图应用中添加地点搜索功能
 - 需要展示 POI 详情信息（名称、地址、电话等）
+- 需要实现驾车路径规划功能（支持多方案、途经点）
 
 ## 文档导航
 
@@ -26,6 +27,7 @@ metadata:
 - **[PlaceAutocomplete 地点自动补全](references/place-autocomplete.md)** - 搜索输入框实时建议
 - **[PlaceSearch 地点检索](references/place-search.md)** - 关键字/周边/范围检索
 - **[PlaceDetail 地点详情](references/place-detail.md)** - POI 详情展示
+- **[RoutePlan 路径规划](references/route-plan.md)** - 驾车路径规划（多方案、途经点、导航调起）
 
 ## 如何使用
 

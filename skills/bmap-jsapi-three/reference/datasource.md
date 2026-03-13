@@ -11,7 +11,7 @@ DataSource 是管理地理数据的核心抽象类。负责数据格式转换、
 | **DataSource** | 基础抽象类 | 动态生成、实时更新 |
 | **GeoJSONDataSource** | GeoJSON 格式（推荐） | 大多数地理可视化 |
 | **JSONDataSource** | 通用 JSON 格式 | 非标准格式数据 |
-| **CSVDataSource** | CSV 表格数据 | 点数据、表格导入 |
+| **CSVDataSource** | CSV 表格数据（支持WKT格式） | 点数据、表格导入 |
 
 ## 构造参数
 
