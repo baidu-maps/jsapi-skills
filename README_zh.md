@@ -13,27 +13,40 @@
 | **bmap-jsapi-three** | 百度地图 JSAPI Three 版 (MapVThree)：基于three.js的Web二三维一体化地图可视化库，支持多源底图加载、三维模型加载、地理数据可视化、自然环境渲染、量测编辑等功能。适用于构建专业的二三维一体化地图、WebGIS、数字孪生等应用。 |
 | **jsapi-ui-kit** | 轻量级百度地图 UI 组件库 (@baidumap/jsapi-ui-kit)：提供 PlaceSearch（关键字/周边/范围检索）和 PlaceDetail（POI 详情展示）组件，快速集成标准化的地图 UI。 |
 
-## 如何使用
+## 安装方式
 
-### 1. 克隆本仓库
+任选以下一种方式安装即可。
+
+### 方式一：npx skills add（推荐）
+
+若你的环境支持 `skills` CLI，可用一条命令安装本仓库的 skills：
+
+```bash
+npx skills add baidu-maps/jsapi-skills
+```
+
+会将本仓库中的全部 skills 安装到当前环境的 skills 目录。
+
+### 方式二：手动安装
+
+**第一步：获取仓库**
+
+克隆本仓库：
 
 ```bash
 git clone https://github.com/baidu-maps/jsapi-skills.git
 cd jsapi-skills
 ```
 
-### 1. 从 GitHub Release 下载（可选）
-
-你也可以直接从 [Releases](https://github.com/baidu-maps/jsapi-skills/releases) 下载附件 `jsapi-skills.zip`，然后解压使用：
+或从 [Releases](https://github.com/baidu-maps/jsapi-skills/releases) 下载附件 `jsapi-skills.zip` 后解压：
 
 ```bash
 unzip jsapi-skills.zip
-cd skills
 ```
 
-### 2. 将 Skill 注册到你的 AI 助手
+**第二步：注册 Skill**
 
-把 `skills/` 目录下的 `bmap-jsapi-gl`、`bmap-jsapi-three`、`jsapi-ui-kit` 链接或复制到当前环境对应的 skills 目录，这样 AI 在对话时会自动读取这些文档。
+将 `skills/` 目录下的 `bmap-jsapi-gl`、`bmap-jsapi-three`、`jsapi-ui-kit` 链接或复制到当前环境对应的 skills 目录。
 
 **Claude Desktop（本地）**
 
@@ -57,7 +70,7 @@ cd skills
   ```
 - 或直接把 `skills/bmap-jsapi-gl`、`skills/bmap-jsapi-three`、`skills/jsapi-ui-kit` 文件夹复制到 `~/.cursor/skills/` 下。
 
-### 3. 在对话中使用
+## 如何使用
 
 在支持 Skills 的客户端里，当你的问题涉及「百度地图」「BMapGL」「jsapi-gl」「MapVThree」「jsapi-ui-kit」等时，助手会优先参考本仓库中对应 skill 的文档来回答，从而给出更贴合百度地图 JSAPI 的代码与用法。
 

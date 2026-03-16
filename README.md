@@ -13,27 +13,40 @@ This repository provides AI assistant **Skills** for [Baidu Map JSAPI](https://l
 | **bmap-jsapi-three** | Baidu Map JSAPI Three (MapVThree): A Web-based 2D/3D integrated map visualization library built on three.js. Supports multi-source base map loading, 3D model loading, geo data visualization, natural environment rendering, measurement and editing, etc. For building professional 2D/3D integrated maps, WebGIS, digital twin and similar applications. |
 | **jsapi-ui-kit** | Lightweight Baidu Map UI component library (@baidumap/jsapi-ui-kit). Provides PlaceSearch (keyword/nearby/bounds search) and PlaceDetail (POI details display) components for quick integration of standardized map UI. |
 
-## How to Use
+## Installation
 
-### 1. Clone the repo
+Choose one of the following ways to install the skills.
+
+### Option 1: npx skills add (recommended)
+
+If you use a client that supports the `skills` CLI, add this repo’s skills in one command:
+
+```bash
+npx skills add baidu-maps/jsapi-skills
+```
+
+This will install all skills from this repository into your environment’s skills directory.
+
+### Option 2: Manual installation
+
+**Step 1: Get the repo**
+
+Clone the repo:
 
 ```bash
 git clone https://github.com/baidu-maps/jsapi-skills.git
 cd jsapi-skills
 ```
 
-### 1. Download from GitHub Releases (Optional)
-
-Download the `jsapi-skills.zip` asset from [Releases](https://github.com/baidu-maps/jsapi-skills/releases), then unzip it:
+Or download the `jsapi-skills.zip` asset from [Releases](https://github.com/baidu-maps/jsapi-skills/releases), then unzip:
 
 ```bash
 unzip jsapi-skills.zip
-cd skills
 ```
 
-### 2. Register the skill with your AI assistant
+**Step 2: Register the skills**
 
-Link or copy the skill directories under `skills/` into your environment's skills folder so the AI can load its docs during conversations.
+Link or copy the skill directories under `skills/` into your environment’s skills folder.
 
 **Claude Desktop (local)**
 
@@ -57,7 +70,7 @@ Link or copy the skill directories under `skills/` into your environment's skill
   ```
 - Or copy the `skills/bmap-jsapi-gl`, `skills/bmap-jsapi-three`, and `skills/jsapi-ui-kit` folders into `~/.cursor/skills/`.
 
-### 3. Use it in chat
+## How to Use
 
 When your questions mention “Baidu Map”, “BMapGL”, “jsapi-gl”, “MapVThree”, “jsapi-ui-kit”, or similar, the assistant will use this skill’s docs to give answers and code that match the Baidu Map JSAPI.
 
