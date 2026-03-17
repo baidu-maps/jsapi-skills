@@ -128,8 +128,7 @@ cluster.clusterDataSource.defineAttribute('text', (item) => {
 cluster.addEventListener('click', (e) => {
     const item = e.entity.value;
     if (item.properties.cluster) {
-        engine.flyTo({
-            center: item.geometry.coordinates,
+        engine.map.flyTo(item.geometry.coordinates, {
             range: 5000,
         });
     }

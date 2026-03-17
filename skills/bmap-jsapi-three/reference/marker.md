@@ -52,8 +52,7 @@ Marker 继承自 DOMOverlay，点击等事件在 `marker.dom` 上监听；拖拽
 ```javascript
 // DOM 点击
 marker.dom.addEventListener('click', () => {
-    engine.flyTo({
-        center: marker.point,
+    engine.map.flyTo(marker.point, {
         range: 5000
     });
 });
