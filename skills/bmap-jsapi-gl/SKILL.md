@@ -6,7 +6,6 @@ version: 1.0.1
 metadata:
   openclaw:
     requires:
-      bins: ["node"]
       env: BMAP_JSAPI_KEY
     primaryEnv: BMAP_JSAPI_KEY
 ---
@@ -88,3 +87,7 @@ references/map-init.md
 - 功能简要说明
 - 完整代码示例及解释
 - API 参数说明和注意事项
+
+## 注意事项
+
+- `references/get-ak.md` - 获取密钥（AK）：当用户无 AK 或 AK 失效时，引导用户前往控制台申请浏览器端类型的 AK
