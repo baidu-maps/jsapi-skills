@@ -6,7 +6,6 @@ version: 1.0.1
 metadata:
   openclaw:
     requires:
-      bins: ["node"]
       env: BMAP_JSAPI_KEY
     primaryEnv: BMAP_JSAPI_KEY
 ---
@@ -29,92 +28,92 @@ metadata:
 
 ### 0. 核心引擎
 
-- `reference/engine.md` - Engine 引擎核心：初始化、场景管理、渲染控制
-- `reference/initialization.md` - 引擎初始化、资源配置、百度地图适配器
+- `references/engine.md` - Engine 引擎核心：初始化、场景管理、渲染控制
+- `references/initialization.md` - 引擎初始化、资源配置、百度地图适配器
 
 ### 1. 数据管理
 
-- `reference/datasource.md` - DataSource 数据源基类
-- `reference/datasource/geojson-datasource.md` - GeoJSON 数据源
-- `reference/datasource/json-datasource.md` - JSON 数据源
-- `reference/datasource/csv-datasource.md` - CSV 数据源
-- `reference/datasource/dataitem.md` - DataItem 数据项
+- `references/datasource.md` - DataSource 数据源基类
+- `references/datasource/geojson-datasource.md` - GeoJSON 数据源
+- `references/datasource/json-datasource.md` - JSON 数据源
+- `references/datasource/csv-datasource.md` - CSV 数据源
+- `references/datasource/dataitem.md` - DataItem 数据项
 
 ### 2. 点对象与标签
 
-- `reference/simple-point.md` - SimplePoint 简单点
-- `reference/effect-point.md` - EffectPoint 特效点（Fan、Bubble、Wave、Breath、Radar 等）
-- `reference/marker-types.md` - 标记类型（Icon、BallonPoint、DOMPoint、EffectModelPoint）
-- `reference/circle.md` - Circle 圆形（屏幕空间渲染）
-- `reference/label.md` - Label 文本/图标标签
-- `reference/text.md` - Text 文本组件
-- `reference/cluster.md` - ClusterPoint 点聚合
+- `references/simple-point.md` - SimplePoint 简单点
+- `references/effect-point.md` - EffectPoint 特效点（Fan、Bubble、Wave、Breath、Radar 等）
+- `references/marker-types.md` - 标记类型（Icon、BallonPoint、DOMPoint、EffectModelPoint）
+- `references/circle.md` - Circle 圆形（屏幕空间渲染）
+- `references/label.md` - Label 文本/图标标签
+- `references/text.md` - Text 文本组件
+- `references/cluster.md` - ClusterPoint 点聚合
 
 ### 3. 线与面
 
-- `reference/polyline.md` - Polyline 折线（flat 参数控制渲染模式）
-- `reference/simple-line.md` - SimpleLine 简单线
-- `reference/wall.md` - Wall 墙体/围栏
-- `reference/polygon.md` - Polygon 多边形
-- `reference/pillar.md` - Pillar 柱体
+- `references/polyline.md` - Polyline 折线（flat 参数控制渲染模式）
+- `references/simple-line.md` - SimpleLine 简单线
+- `references/wall.md` - Wall 墙体/围栏
+- `references/polygon.md` - Polygon 多边形
+- `references/pillar.md` - Pillar 柱体
 
 ### 4. 覆盖物
 
-- `reference/marker.md` - Marker 标记
-- `reference/popup.md` - Popup 弹出窗口
-- `reference/dom-overlay.md` - DOMOverlay DOM 覆盖物
+- `references/marker.md` - Marker 标记
+- `references/popup.md` - Popup 弹出窗口
+- `references/dom-overlay.md` - DOMOverlay DOM 覆盖物
 
 ### 5. 追踪器
 
-- `reference/tracker.md` - 追踪器总览与生命周期
-- `reference/path-tracker.md` - PathTracker 路径追踪
-- `reference/object-tracker.md` - ObjectTracker 对象追踪
-- `reference/orbit-tracker.md` - OrbitTracker 轨道追踪
+- `references/tracker.md` - 追踪器总览与生命周期
+- `references/path-tracker.md` - PathTracker 路径追踪
+- `references/object-tracker.md` - ObjectTracker 对象追踪
+- `references/orbit-tracker.md` - OrbitTracker 轨道追踪
 
 ### 6. 编辑与测量
 
-- `reference/editor.md` - Editor 编辑器
-- `reference/measure.md` - Measure 测量工具
+- `references/editor.md` - Editor 编辑器
+- `references/measure.md` - Measure 测量工具
 
 ### 7. 3D 模型
 
-- `reference/model.md` - 3D 模型加载（SimpleModel/AnimationModel/LODModel）
-- `reference/twin.md` - Twin 孪生车流（实时车流可视化、DataProvider 数据处理）
-- `reference/mock-twin.md` - MockTwin 模拟车流（基于路线数据的车流模拟生成）
+- `references/model.md` - 3D 模型加载（SimpleModel/AnimationModel/LODModel）
+- `references/twin.md` - Twin 孪生车流（实时车流可视化、DataProvider 数据处理）
+- `references/mock-twin.md` - MockTwin 模拟车流（基于路线数据的车流模拟生成）
 
 ### 8. 材质与特效
 
-- `reference/materials.md` - 材质系统（WaterMaterial、ExtendMeshStandardMaterial 等）
-- `reference/easing-function.md` - 缓动函数（LINEAR、QUINTIC_IN_OUT、CUBIC_OUT）
+- `references/materials.md` - 材质系统（WaterMaterial、ExtendMeshStandardMaterial 等）
+- `references/easing-function.md` - 缓动函数（LINEAR、QUINTIC_IN_OUT、CUBIC_OUT）
 
 ### 9. 天空与天气
 
-- `reference/sky-weather.md` - 天空系统（EmptySky/DynamicSky/StaticSky）和天气
+- `references/sky-weather.md` - 天空系统（EmptySky/DynamicSky/StaticSky）和天气
 
 ### 10. 热力图
 
-- `reference/heatmap.md` - Heatmap 热力图
+- `references/heatmap.md` - Heatmap 热力图
 
 ### 11. 地图图层加载
 
-- `reference/imagery-tile-provider.md` - 影像瓦片加载（Baidu、Tianditu、Bing、OSM、Stadia）
-- `reference/vector-tile-provider.md` - 矢量瓦片加载（Baidu、Mapbox）
-- `reference/third-party-imagery.md` - 第三方图层接入（WMS、WMTS、XYZ 标准协议）
-- `reference/terrain-tile-provider.md` - 地形瓦片加载（Cesium、平面地形）
-- `reference/tile-mask.md` - TileMask 瓦片掩膜（按区域裁剪瓦片图层显示）
+- `references/imagery-tile-provider.md` - 影像瓦片加载（Baidu、Tianditu、Bing、OSM、Stadia）
+- `references/vector-tile-provider.md` - 矢量瓦片加载（Baidu、Mapbox）
+- `references/third-party-imagery.md` - 第三方图层接入（WMS、WMTS、XYZ 标准协议）
+- `references/terrain-tile-provider.md` - 地形瓦片加载（Cesium、平面地形）
+- `references/tile-mask.md` - TileMask 瓦片掩膜（按区域裁剪瓦片图层显示）
 
 ### 12. LBS 位置服务
 
-- `reference/services.md` - 位置基础服务（地理编码、搜索、路线规划、行政区划等）
+- `references/services.md` - 位置基础服务（地理编码、搜索、路线规划、行政区划等）
 
 ### 13. 3DTiles 加载
 
-- `reference/3dtiles-loading.md` - 3D Tiles 加载（Default3DTiles、HDMap3DTiles）
+- `references/3dtiles-loading.md` - 3D Tiles 加载（Default3DTiles、HDMap3DTiles）
 
 ### 14. 基础概念
 
-- `reference/common/coordinate-system.md` - 坐标系：Z-up、投影方式
-- `reference/common/event-binding.md` - 事件绑定模式
+- `references/common/coordinate-system.md` - 坐标系：Z-up、投影方式
+- `references/common/event-binding.md` - 事件绑定模式
 
 ## 关键注意事项
 
