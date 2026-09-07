@@ -10,6 +10,7 @@ This repository provides AI assistant **Skills** for [Baidu Map JSAPI](https://l
 | Skill | Description |
 |-------|-------------|
 | **bmap-jsapi-gl** | Baidu Map JSAPI WebGL (BMapGL/BMap): map initialization, overlays (markers, polylines, polygons), events, layers, routing, geocoding, etc. For 2D and 2.5D map development. |
+| **bmap-jsapi-v4** | Baidu Map JavaScript API 4.0 (BMap): map initialization, overlays, layers, search and routing services, geolocation, panorama, view animation, TypeScript integration, and lifecycle management. |
 | **bmap-jsapi-three** | Baidu Map JSAPI Three (MapVThree): A Web-based 2D/3D integrated map visualization library built on three.js. Supports multi-source base map loading, 3D model loading, geo data visualization, natural environment rendering, measurement and editing, etc. For building professional 2D/3D integrated maps, WebGIS, digital twin and similar applications. |
 | **jsapi-ui-kit** | Lightweight Baidu Map UI component library (@baidumap/jsapi-ui-kit). Provides PlaceSearch (keyword/nearby/bounds search) and PlaceDetail (POI details display) components for quick integration of standardized map UI. |
 
@@ -54,10 +55,11 @@ Link or copy the skill directories under `skills/` into your environment’s ski
 - Register via symlink (recommended):
   ```bash
   ln -sfn "$(pwd)/skills/bmap-jsapi-gl" ~/.claude/skills/bmap-jsapi-gl
+  ln -sfn "$(pwd)/skills/bmap-jsapi-v4" ~/.claude/skills/bmap-jsapi-v4
   ln -sfn "$(pwd)/skills/bmap-jsapi-three" ~/.claude/skills/bmap-jsapi-three
   ln -sfn "$(pwd)/skills/jsapi-ui-kit" ~/.claude/skills/jsapi-ui-kit
   ```
-- Or copy the `skills/bmap-jsapi-gl`, `skills/bmap-jsapi-three`, and `skills/jsapi-ui-kit` folders into `~/.claude/skills/`.
+- Or copy the `skills/bmap-jsapi-gl`, `skills/bmap-jsapi-v4`, `skills/bmap-jsapi-three`, and `skills/jsapi-ui-kit` folders into `~/.claude/skills/`.
 
 **Cursor**
 
@@ -65,14 +67,15 @@ Link or copy the skill directories under `skills/` into your environment’s ski
 - Register via symlink (recommended):
   ```bash
   ln -sfn "$(pwd)/skills/bmap-jsapi-gl" ~/.cursor/skills/bmap-jsapi-gl
+  ln -sfn "$(pwd)/skills/bmap-jsapi-v4" ~/.cursor/skills/bmap-jsapi-v4
   ln -sfn "$(pwd)/skills/bmap-jsapi-three" ~/.cursor/skills/bmap-jsapi-three
   ln -sfn "$(pwd)/skills/jsapi-ui-kit" ~/.cursor/skills/jsapi-ui-kit
   ```
-- Or copy the `skills/bmap-jsapi-gl`, `skills/bmap-jsapi-three`, and `skills/jsapi-ui-kit` folders into `~/.cursor/skills/`.
+- Or copy the `skills/bmap-jsapi-gl`, `skills/bmap-jsapi-v4`, `skills/bmap-jsapi-three`, and `skills/jsapi-ui-kit` folders into `~/.cursor/skills/`.
 
 ## How to Use
 
-When your questions mention “Baidu Map”, “BMapGL”, “jsapi-gl”, “MapVThree”, “jsapi-ui-kit”, or similar, the assistant will use this skill’s docs to give answers and code that match the Baidu Map JSAPI.
+When your questions mention “Baidu Map”, “BMapGL”, “BMap v4.0”, “jsapi-gl”, “MapVThree”, “jsapi-ui-kit”, or similar, the assistant will use this skill’s docs to give answers and code that match the Baidu Map JSAPI.
 
 ## Repo structure
 
@@ -80,6 +83,9 @@ When your questions mention “Baidu Map”, “BMapGL”, “jsapi-gl”, “Ma
 .
 ├── skills/
 │   ├── bmap-jsapi-gl/          # Baidu Map JSAPI WebGL skill
+│   │   ├── SKILL.md            # Skill entry and index
+│   │   └── references/         # API reference docs
+│   ├── bmap-jsapi-v4/          # Baidu Map JavaScript API 4.0 skill
 │   │   ├── SKILL.md            # Skill entry and index
 │   │   └── references/         # API reference docs
 │   ├── bmap-jsapi-three/       # MapV-Three 3D map skill

@@ -10,6 +10,7 @@
 | Skill | 说明 |
 |-------|------|
 | **bmap-jsapi-gl** | 百度地图 JSAPI WebGL 版 (BMapGL/BMap)：地图初始化、覆盖物（标注/折线/多边形）、事件、图层、路线规划、地理编码等。适用于 2D、2.5D 地图页面开发。 |
+| **bmap-jsapi-v4** | 百度地图 JavaScript API 4.0 (BMap)：涵盖地图初始化、覆盖物、图层、检索与路线服务、定位、全景、视图动画、TypeScript 集成和生命周期管理。 |
 | **bmap-jsapi-three** | 百度地图 JSAPI Three 版 (MapVThree)：基于three.js的Web二三维一体化地图可视化库，支持多源底图加载、三维模型加载、地理数据可视化、自然环境渲染、量测编辑等功能。适用于构建专业的二三维一体化地图、WebGIS、数字孪生等应用。 |
 | **jsapi-ui-kit** | 轻量级百度地图 UI 组件库 (@baidumap/jsapi-ui-kit)：提供 PlaceSearch（关键字/周边/范围检索）和 PlaceDetail（POI 详情展示）组件，快速集成标准化的地图 UI。 |
 
@@ -54,10 +55,11 @@ unzip jsapi-skills.zip
 - 注册（软链，推荐）：
   ```bash
   ln -sfn "$(pwd)/skills/bmap-jsapi-gl" ~/.claude/skills/bmap-jsapi-gl
+  ln -sfn "$(pwd)/skills/bmap-jsapi-v4" ~/.claude/skills/bmap-jsapi-v4
   ln -sfn "$(pwd)/skills/bmap-jsapi-three" ~/.claude/skills/bmap-jsapi-three
   ln -sfn "$(pwd)/skills/jsapi-ui-kit" ~/.claude/skills/jsapi-ui-kit
   ```
-- 或直接把 `skills/bmap-jsapi-gl`、`skills/bmap-jsapi-three`、`skills/jsapi-ui-kit` 文件夹复制到 `~/.claude/skills/` 下。
+- 或直接把 `skills/bmap-jsapi-gl`、`skills/bmap-jsapi-v4`、`skills/bmap-jsapi-three`、`skills/jsapi-ui-kit` 文件夹复制到 `~/.claude/skills/` 下。
 
 **Cursor**
 
@@ -65,14 +67,15 @@ unzip jsapi-skills.zip
 - 注册（软链，推荐）：
   ```bash
   ln -sfn "$(pwd)/skills/bmap-jsapi-gl" ~/.cursor/skills/bmap-jsapi-gl
+  ln -sfn "$(pwd)/skills/bmap-jsapi-v4" ~/.cursor/skills/bmap-jsapi-v4
   ln -sfn "$(pwd)/skills/bmap-jsapi-three" ~/.cursor/skills/bmap-jsapi-three
   ln -sfn "$(pwd)/skills/jsapi-ui-kit" ~/.cursor/skills/jsapi-ui-kit
   ```
-- 或直接把 `skills/bmap-jsapi-gl`、`skills/bmap-jsapi-three`、`skills/jsapi-ui-kit` 文件夹复制到 `~/.cursor/skills/` 下。
+- 或直接把 `skills/bmap-jsapi-gl`、`skills/bmap-jsapi-v4`、`skills/bmap-jsapi-three`、`skills/jsapi-ui-kit` 文件夹复制到 `~/.cursor/skills/` 下。
 
 ## 如何使用
 
-在支持 Skills 的客户端里，当你的问题涉及「百度地图」「BMapGL」「jsapi-gl」「MapVThree」「jsapi-ui-kit」等时，助手会优先参考本仓库中对应 skill 的文档来回答，从而给出更贴合百度地图 JSAPI 的代码与用法。
+在支持 Skills 的客户端里，当你的问题涉及「百度地图」「BMapGL」「BMap v4.0」「jsapi-gl」「MapVThree」「jsapi-ui-kit」等时，助手会优先参考本仓库中对应 skill 的文档来回答，从而给出更贴合百度地图 JSAPI 的代码与用法。
 
 ## 仓库结构
 
@@ -80,6 +83,9 @@ unzip jsapi-skills.zip
 .
 ├── skills/
 │   ├── bmap-jsapi-gl/          # 百度地图 JSAPI WebGL Skill
+│   │   ├── SKILL.md            # Skill 入口与索引
+│   │   └── references/         # API 参考文档
+│   ├── bmap-jsapi-v4/          # 百度地图 JavaScript API 4.0 Skill
 │   │   ├── SKILL.md            # Skill 入口与索引
 │   │   └── references/         # API 参考文档
 │   ├── bmap-jsapi-three/       # 百度地图 JSAPI Three Skill
@@ -96,4 +102,3 @@ unzip jsapi-skills.zip
 ## 许可
 
 Skill 内若声明了 license（如 MIT），以该声明为准；仓库整体可沿用相同许可。
-
